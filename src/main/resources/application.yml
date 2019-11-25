@@ -1,0 +1,62 @@
+###服务端口号
+server:
+  port: 8010
+  tomcat:
+    min-SpareThreads: 2     #初始化时创建的线程数
+    max-threads: 10       #最大并发数
+    #下面是tomcat 启动的默认值
+#    uri-encoding: UTF-8
+#    max-threads: 1000        #最大并发数
+#    max-connections: 20000   #接受和处理的最大连接数
+#    min-SpareThreads: 20     #初始化时创建的线程数
+#    acceptCount: 700         #可以放到处理队列中的请求数
+##定义服务名称
+spring:
+  application:
+    name: SpringCloud-Hystrix
+###eureka 基本信息配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka,http://localhost:8001/eureka
+     ### 需要将我的服务注册到eureka上
+    register-with-eureka: true
+    ####需要检索服务
+    fetch-registry: true
+  server:
+  #    # 测试时关闭自我保护机制，保证不可用服务及时踢出  ***
+       enable-self-preservation: false
+       #过期(失效剔除)实例 启动并运行的时间间隔
+       eviction-interval-timer-in-ms: 3000
+
+
+ribbon:
+###指的是建立连接后从服务器读取到可用资源所用的时间。
+ ReadTimeout: 5000
+###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+ ConnectTimeout: 5000
+
+feign:
+  hystrix:
+    enabled: false  #true：开启hystrix
+    command:
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000 #hystrix超时时间
+
+
+configtest:
+  value: SpringCloud-fileName-Test
+
+#### hystrix禁止超时时间
+#hystrix:
+# command:
+#   default:
+#      execution:
+#       timeout:
+#        enabled: false
+
