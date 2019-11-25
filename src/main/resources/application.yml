@@ -52,6 +52,8 @@ hystrix:
 configtest:
   value: SpringCloud-fileName-Test
 
+filename:
+  testName: SpringCloud-config-server-file-test2
 #### hystrix禁止超时时间
 #hystrix:
 # command:
