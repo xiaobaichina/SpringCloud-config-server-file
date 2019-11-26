@@ -53,7 +53,7 @@ configtest:
   value: SpringCloud-fileName-Test
 
 filename:
-  testName1: SpringCloud-config-server-file-test3
+  testName1: SpringCloud-config-server-file-test1
 #### hystrix禁止超时时间
 #hystrix:
 # command:
