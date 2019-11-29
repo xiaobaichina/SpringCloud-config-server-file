@@ -9,5 +9,9 @@ zuul:
         ### 以 /api-order/访问转发到订单服务
       path: /api-order/**
       serviceId: SpringCloud-zuul-order
-
+    api-c:
+        ### 以 /api-order/访问转发到订单服务
+      path: /api-zuul/**
+      serviceId: SpringCloud-zuul
+      
 apptests: nihao
